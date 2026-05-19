@@ -1,4 +1,3 @@
-// عناصر الصفحة
 const productsContainer = document.getElementById("productsContainer");
 
 const searchInput = document.getElementById("searchInput");
@@ -12,6 +11,7 @@ const productModal = document.getElementById("productModal");
 const modalBody = document.getElementById("modalBody");
 
 const closeModal = document.getElementById("closeModal");
+
 
 
 
@@ -38,13 +38,13 @@ async function fetchProducts(searchText = "") {
 
   }
 
-  catch (error) {
+  catch(error){
 
     errorMessage.textContent = error.message;
 
   }
 
-  finally {
+  finally{
 
     loader.classList.add("hidden");
 
@@ -55,9 +55,9 @@ async function fetchProducts(searchText = "") {
 
 
 // ================= FETCH SINGLE PRODUCT =================
-async function fetchSingleProduct(productId) {
+async function fetchSingleProduct(productId){
 
-  try {
+  try{
 
     loader.classList.remove("hidden");
 
@@ -65,7 +65,7 @@ async function fetchSingleProduct(productId) {
       `https://dummyjson.com/products/${productId}`
     );
 
-    if (!response.ok) {
+    if(!response.ok){
       throw new Error("Failed to fetch product");
     }
 
@@ -75,13 +75,13 @@ async function fetchSingleProduct(productId) {
 
   }
 
-  catch (error) {
+  catch(error){
 
     errorMessage.textContent = error.message;
 
   }
 
-  finally {
+  finally{
 
     loader.classList.add("hidden");
 
@@ -92,12 +92,12 @@ async function fetchSingleProduct(productId) {
 
 
 // ================= RENDER PRODUCTS =================
-function renderProducts(products) {
+function renderProducts(products){
 
   productsContainer.innerHTML = "";
 
 
-  if (products.length === 0) {
+  if(products.length === 0){
 
     productsContainer.innerHTML = `
       <h2>No Products Found</h2>
@@ -107,29 +107,42 @@ function renderProducts(products) {
   }
 
 
-  products.forEach((product) => {
+  products.forEach((product)=>{
 
-    productsContainer.innerHTML += `
+    const card = document.createElement("div");
 
-      <div class="card" onclick="fetchSingleProduct(${product.id})">
+    card.classList.add("card");
 
-        <img src="${product.thumbnail}" alt="${product.title}" />
 
-        <div class="card-content">
+    card.innerHTML = `
 
-          <h3>${product.title}</h3>
+      <img src="${product.thumbnail}" alt="${product.title}"/>
 
-          <p>💲 Price: $${product.price}</p>
+      <div class="card-content">
 
-          <p>⭐ Rating: ${product.rating}</p>
+        <h3>${product.title}</h3>
 
-          <p>📦 Stock: ${product.stock}</p>
+        <p>💲 Price: $${product.price}</p>
 
-        </div>
+        <p>⭐ Rating: ${product.rating}</p>
+
+        <p>📦 Stock: ${product.stock}</p>
 
       </div>
 
     `;
+
+
+    // click event
+    card.addEventListener("click", ()=>{
+
+      fetchSingleProduct(product.id);
+
+    });
+
+
+    productsContainer.appendChild(card);
+
   });
 
 }
@@ -137,7 +150,7 @@ function renderProducts(products) {
 
 
 // ================= SHOW MODAL =================
-function showProductModal(product) {
+function showProductModal(product){
 
   modalBody.innerHTML = `
 
@@ -145,7 +158,11 @@ function showProductModal(product) {
 
     <h2>${product.title}</h2>
 
+    <br>
+
     <p><strong>Description:</strong> ${product.description}</p>
+
+    <br>
 
     <p><strong>Category:</strong> ${product.category}</p>
 
@@ -167,6 +184,7 @@ function showProductModal(product) {
 
   `;
 
+
   productModal.classList.remove("hidden");
 
 }
@@ -174,7 +192,7 @@ function showProductModal(product) {
 
 
 // ================= CLOSE MODAL =================
-closeModal.addEventListener("click", () => {
+closeModal.addEventListener("click", ()=>{
 
   productModal.classList.add("hidden");
 
@@ -182,10 +200,10 @@ closeModal.addEventListener("click", () => {
 
 
 
-// ================= CLOSE WHEN CLICK OUTSIDE =================
-window.addEventListener("click", (e) => {
+// ================= CLICK OUTSIDE MODAL =================
+window.addEventListener("click",(e)=>{
 
-  if (e.target === productModal) {
+  if(e.target === productModal){
 
     productModal.classList.add("hidden");
 
@@ -196,7 +214,7 @@ window.addEventListener("click", (e) => {
 
 
 // ================= SEARCH =================
-searchInput.addEventListener("input", (e) => {
+searchInput.addEventListener("input",(e)=>{
 
   fetchProducts(e.target.value);
 

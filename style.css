@@ -1,201 +1,143 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f4f4;
+  padding:20px;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+header h1{
+  color:#333;
+}
+
+input{
+  width:250px;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+#productsContainer{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:15px;
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  margin-bottom:8px;
+}
+
+.hidden{
+  display:none;
+}
+
+#loader{
+  text-align:center;
+  margin-bottom:20px;
+  font-size:22px;
+}
+
+#errorMessage{
+  color:red;
+  margin-bottom:15px;
+  text-align:center;
 }
 
 
-/* Body */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:20px;
 }
 
+.modal-content{
+  background:white;
+  width:100%;
+  max-width:600px;
 
-/* Header */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border-radius:12px;
 
-  margin-bottom: 25px;
+  padding:20px;
+
+  position:relative;
+
+  max-height:90vh;
+  overflow:auto;
 }
 
+#closeModal{
+  position:absolute;
+  top:10px;
+  right:20px;
 
-/* Search */
-input {
-  width: 260px;
-
-  padding: 10px;
-
-  border: 1px solid #ccc;
-  border-radius: 8px;
-
-  font-size: 16px;
+  font-size:30px;
+  cursor:pointer;
 }
 
-
-/* Products Grid */
-#productsContainer {
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-  gap: 20px;
+.modal-content img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:15px;
 }
 
+@media(max-width:600px){
 
-/* Card */
-.card {
-  background-color: white;
-
-  border-radius: 12px;
-
-  overflow: hidden;
-
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
-  transition: 0.3s;
-
-  cursor: pointer;
-}
-
-
-/* Hover */
-.card:hover {
-  transform: translateY(-5px);
-}
-
-
-/* Product Image */
-.card img {
-  width: 100%;
-  height: 220px;
-
-  object-fit: cover;
-}
-
-
-/* Content */
-.card-content {
-  padding: 15px;
-}
-
-
-/* Title */
-.card h3 {
-  margin-bottom: 10px;
-}
-
-
-/* Text */
-.card p {
-  margin-bottom: 8px;
-}
-
-
-/* Loader */
-#loader {
-  text-align: center;
-
-  margin-bottom: 20px;
-
-  font-size: 22px;
-}
-
-
-/* Hidden */
-.hidden {
-  display: none;
-}
-
-
-/* Error */
-#errorMessage {
-  color: red;
-
-  text-align: center;
-
-  margin-bottom: 15px;
-}
-
-
-/* ================= MODAL ================= */
-
-.modal {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  background: rgba(0,0,0,0.7);
-
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-
-  padding: 20px;
-}
-
-
-/* Modal Content */
-.modal-content {
-  background: white;
-
-  width: 100%;
-  max-width: 600px;
-
-  border-radius: 12px;
-
-  padding: 20px;
-
-  position: relative;
-}
-
-
-/* Close Button */
-#closeModal {
-  position: absolute;
-
-  right: 20px;
-  top: 15px;
-
-  font-size: 30px;
-
-  cursor: pointer;
-}
-
-
-/* Modal Image */
-.modal-content img {
-  width: 100%;
-
-  height: 300px;
-
-  object-fit: cover;
-
-  border-radius: 10px;
-
-  margin-bottom: 15px;
-}
-
-
-/* Responsive */
-@media (max-width: 600px) {
-
-  header {
-    flex-direction: column;
-
-    gap: 15px;
+  header{
+    flex-direction:column;
+    gap:15px;
   }
 
-  input {
-    width: 100%;
+  input{
+    width:100%;
   }
 
 }
