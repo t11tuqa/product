@@ -23,13 +23,7 @@ header {
 }
 
 
-/* Title */
-header h1 {
-  color: #333;
-}
-
-
-/* Search Input */
+/* Search */
 input {
   width: 260px;
 
@@ -42,7 +36,7 @@ input {
 }
 
 
-/* Products Container */
+/* Products Grid */
 #productsContainer {
   display: grid;
 
@@ -52,7 +46,7 @@ input {
 }
 
 
-/* Product Card */
+/* Card */
 .card {
   background-color: white;
 
@@ -63,10 +57,12 @@ input {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
   transition: 0.3s;
+
+  cursor: pointer;
 }
 
 
-/* Hover Effect */
+/* Hover */
 .card:hover {
   transform: translateY(-5px);
 }
@@ -81,25 +77,21 @@ input {
 }
 
 
-/* Card Content */
+/* Content */
 .card-content {
   padding: 15px;
 }
 
 
-/* Product Title */
+/* Title */
 .card h3 {
   margin-bottom: 10px;
-
-  color: #222;
 }
 
 
-/* Product Text */
+/* Text */
 .card p {
   margin-bottom: 8px;
-
-  color: #555;
 }
 
 
@@ -109,27 +101,87 @@ input {
 
   margin-bottom: 20px;
 
-  font-size: 20px;
-
-  color: #444;
+  font-size: 22px;
 }
 
 
-/* Hidden Class */
+/* Hidden */
 .hidden {
   display: none;
 }
 
 
-/* Error Message */
+/* Error */
 #errorMessage {
   color: red;
 
   text-align: center;
 
   margin-bottom: 15px;
+}
 
-  font-size: 18px;
+
+/* ================= MODAL ================= */
+
+.modal {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.7);
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+
+/* Modal Content */
+.modal-content {
+  background: white;
+
+  width: 100%;
+  max-width: 600px;
+
+  border-radius: 12px;
+
+  padding: 20px;
+
+  position: relative;
+}
+
+
+/* Close Button */
+#closeModal {
+  position: absolute;
+
+  right: 20px;
+  top: 15px;
+
+  font-size: 30px;
+
+  cursor: pointer;
+}
+
+
+/* Modal Image */
+.modal-content img {
+  width: 100%;
+
+  height: 300px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  margin-bottom: 15px;
 }
 
 
@@ -145,4 +197,5 @@ input {
   input {
     width: 100%;
   }
+
 }
