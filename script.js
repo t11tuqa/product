@@ -1,3 +1,4 @@
+// ELEMENTS
 const productsContainer = document.getElementById("productsContainer");
 
 const searchInput = document.getElementById("searchInput");
@@ -11,7 +12,6 @@ const productModal = document.getElementById("productModal");
 const modalBody = document.getElementById("modalBody");
 
 const closeModal = document.getElementById("closeModal");
-
 
 
 
@@ -109,14 +109,16 @@ function renderProducts(products){
 
   products.forEach((product)=>{
 
+    // CREATE CARD
     const card = document.createElement("div");
 
     card.classList.add("card");
 
 
+    // CARD CONTENT
     card.innerHTML = `
 
-      <img src="${product.thumbnail}" alt="${product.title}"/>
+      <img src="${product.thumbnail}" alt="${product.title}">
 
       <div class="card-content">
 
@@ -133,7 +135,7 @@ function renderProducts(products){
     `;
 
 
-    // click event
+    // CLICK EVENT
     card.addEventListener("click", ()=>{
 
       fetchSingleProduct(product.id);
@@ -141,6 +143,7 @@ function renderProducts(products){
     });
 
 
+    // APPEND CARD
     productsContainer.appendChild(card);
 
   });
@@ -154,13 +157,13 @@ function showProductModal(product){
 
   modalBody.innerHTML = `
 
-    <img src="${product.thumbnail}" alt="${product.title}" />
+    <img src="${product.thumbnail}" alt="${product.title}">
 
     <h2>${product.title}</h2>
 
     <br>
 
-    <p><strong>Description:</strong> ${product.description}</p>
+    <p>${product.description}</p>
 
     <br>
 
@@ -200,7 +203,7 @@ closeModal.addEventListener("click", ()=>{
 
 
 
-// ================= CLICK OUTSIDE MODAL =================
+// ================= CLOSE OUTSIDE =================
 window.addEventListener("click",(e)=>{
 
   if(e.target === productModal){
